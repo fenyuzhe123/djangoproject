@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {% for obj in queryset %}
+        <tr>
+            <th>{{ obj.host }}</th>
+            <th>{{ obj.device }}</th>
+    {% endfor %}
+</body>
+</html>

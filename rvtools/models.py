@@ -1,5 +1,6 @@
 from django.db import models
 
+
 # Create your models here.
 # vHBA sheet
 class vHBA(models.Model):
@@ -16,7 +17,3 @@ class vHBA(models.Model):
     wwn = models.CharField(verbose_name='Wwn', max_length=255, blank=True, null=True)
     vi_sdk_server = models.CharField(verbose_name='vCenter地址', max_length=64, blank=True, null=True)
     vi_sdk_uuid = models.CharField(verbose_name='vCenter UUID', max_length=255, blank=True, null=True)
-
-
-
-
