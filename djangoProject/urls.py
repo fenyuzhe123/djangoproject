@@ -18,5 +18,6 @@ from django.urls import path
 from rvtools import views
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('index/', views.index)
+    path('', views.index),
+    path('dash/', views.dash)
 ]
