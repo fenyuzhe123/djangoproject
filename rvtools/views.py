@@ -11,11 +11,14 @@ class dashModelForm(forms.ModelForm):
 
 
 def dash(request):
-    queryset = models.vHBA.objects.all().order_by("host")
-
+    queryset = models.vHBA.objects.all()
     return render(request, "test.html", {"queryset": queryset})
 
 
 def index(request):
-    return render(request, 'servers_list.html')
+    queryset = models.vHBA.objects.all().order_by("host")
+    for i in queryset:
+        print(i.vi_sdk_uuid)
+
+    return render(request, 'servers_list.html', {"queryset": queryset})
 

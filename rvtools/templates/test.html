@@ -6,12 +6,11 @@
 </head>
 <body>
     {% for obj in queryset %}
-        <tr>
+
             <th>{{ obj.host }}</th>
             <th>{{ obj.device }}</th>
             <th>{{ obj.status }}</th>
             <th>{{ obj.cluster }}</th>
-
 
     {% endfor %}
 </body>
