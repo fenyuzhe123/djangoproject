@@ -7,7 +7,7 @@ from . import models
 class dashModelForm(forms.ModelForm):
     class Meta:
         model = models.vHBA
-        fields = ["host", "device"]
+        fields = '__all__'
 
 
 def dash(request):
