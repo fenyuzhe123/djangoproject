@@ -18,3 +18,4 @@ def dash(request):
 
 def index(request):
     return render(request, 'servers_list.html')
+
