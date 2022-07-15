@@ -102,7 +102,7 @@
                                             </thead>
                                             <tbody id="tb1">
 
-                                            {% for obj in result %}
+                                            {% for obj in queryset %}
                                                 <tr>
 {#                                                    <td class="sn"><a href="{% url 'ServerDetail' server.id %}">{{server.sn}}</a></td>#}
                                                     <td>{{ obj.host }}</td>
@@ -153,15 +153,16 @@
 {#                                            {% endfor%}#}
                                             </tbody>
                                         </table>
+
                                     <ul class="pagination">
                                             {{ page_string }}
                                     </ul>
+                                        <li>共计 {{ total }} 项</li>
+
                                     </div>
                                 </div>
                             </div>
                         </div>
-
-
 
             </div>
         </div>

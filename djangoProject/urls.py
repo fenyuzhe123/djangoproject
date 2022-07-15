@@ -19,5 +19,4 @@ from rvtools import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='hba'),
-    path('dash/', views.dash)
 ]
