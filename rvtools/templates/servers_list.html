@@ -43,10 +43,10 @@
    <!-- Page-Title -->
     <div class="row ">
             <div class="col-sm-12">
-                <h4 class="page-title">服务器列表</h4>
+                <h4 class="page-title">HBA列表</h4>
                 <ol class="breadcrumb">
                     <li>
-                        <a href="#">资产管理</a>
+                        <a href="#">主机管理</a>
                     </li>
                     <li class="active">
 {#                        <a href="{% url 'ServerList' 1 %}">服务器列表</a>#}
@@ -58,27 +58,25 @@
                     <div class="card-box">
                         <div class="row">
                             <div class="col-sm-12">
-                                <h4 class="m-t-0 header-title"><b>Simpletour服务器列表</b></h4>
-                                <p class="text-muted font-13">
-                                    服务器详细情况请点击主机SN号
-                                </p>
+                                <h4 class="m-t-0 header-title"><b>服务器HBA卡列表</b></h4>
                             </div>
 
-                                <div>
-                                <div class="col-sm-8">
-                                </div>
-                                <div class="col-sm-4">
-{#                                    <form method="post" action="{% url 'ServerList' 1 %}">#}
-{#                                        {% csrf_token  %}#}
-                                        <div class="input-group">
-                                            <input type="text" id="search" name="search" class="form-control" placeholder="输入SN编号\设备名\主机名">
-                                            <span class="input-group-btn">
-                                            <button type="submit" class="btn waves-effect waves-light btn-primary"  ><i class="fa fa-search"></i></button>
-                                            </span>
-                                        </div>
-                                    </form>
-                                 </div>
+                            <div>
+                                <div class="col-sm-8"></div>
+                                    <div class="col-sm-4">
+                                            <form method="get" action="{% url 'hba'  %}">
+{#                                            {{% csrf_token  %}}#}
+                                                <div class="input-group">
+                                                <input type="text" id="q" name="q" class="form-control" placeholder="搜索..." value="{{ search_data }}">
+                                                <span class="input-group-btn">
+                                                <button type="submit" class="btn waves-effect waves-light btn-primary"  ><i class="fa fa-search"></i></button>
+                                                </span>
+                                                </div>
+                                            </form>
+                                    </div>
                             </div>
+
+
 
                             <div class="col-sm-12">
                                 <br>
@@ -104,7 +102,7 @@
                                             </thead>
                                             <tbody id="tb1">
 
-                                            {% for obj in queryset %}
+                                            {% for obj in result %}
                                                 <tr>
 {#                                                    <td class="sn"><a href="{% url 'ServerDetail' server.id %}">{{server.sn}}</a></td>#}
                                                     <td>{{ obj.host }}</td>
@@ -155,11 +153,9 @@
 {#                                            {% endfor%}#}
                                             </tbody>
                                         </table>
-                                              <nav>
-                                                <ul class="pagination" >
-                                                    {{page}}
-                                                </ul>
-                                                </nav>
+                                    <ul class="pagination">
+                                            {{ page_string }}
+                                    </ul>
                                     </div>
                                 </div>
                             </div>

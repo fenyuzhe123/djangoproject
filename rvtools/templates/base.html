@@ -6,7 +6,7 @@
 <meta name="description" content="www.divmb.com creativity">
 <meta name="author" content="www.divmb.com">
 <link rel="shortcut icon" href="/static/assets/images/favicon_1.ico">
-<title>SimpletourDevops</title>
+<title>TAM 运维系统</title>
 <!--Morris Chart CSS -->
 
 <link rel="stylesheet" href="/static/assets/css/xterm.css" />
@@ -74,55 +74,66 @@
 {#            <li> <a href="{% url 'index' %}" class="waves-effect "><i class="ti-home"></i> <span> 系统首页 </span></a> </li>#}
 {#            {%endif%}#}
 {#            {% if perms.servermanager.assets_index_view %}#}
-                <li class="has_sub" id="index"> <a href="#" class="waves-effect"><i class="ti-menu"></i> <span>资产管理</span> </a>
+                <li class="has_sub" id="index"> <a href="#" class="waves-effect"><i class="ti-desktop"></i> <span>虚拟机清单</span> </a>
                 <ul class="list-unstyled">
-                  <li><a href="">资产表管理</a></li>
-                  <li><a href="">服务器列表</a></li>
+                    <li><a href="">虚拟机清单</a></li>
+                    <li><a href="">虚拟机CPU</a></li>
+                    <li><a href="">虚拟内存</a></li>
+                    <li><a href="">虚拟机磁盘</a></li>
+                    <li><a href="">虚拟机分区</a></li>
+                    <li><a href="">虚拟机网卡</a></li>
+                    <li><a href="">虚拟机快照</a></li>
+                    <li><a href="">VMware Tools</a></li>
+                    <li><a href="">CD-ROM</a></li>
                 </ul>
               </li>
 {#            {%endif%}#}
 {#            {%if perms.dockermanager.docker_index_view%}#}
-               <li class="has_sub"> <a href="#" class="waves-effect"><i class="ti-server"></i> <span> 容器管理 </span> </a>
+               <li class="has_sub"> <a href="#" class="waves-effect"><i class="ti-menu"></i> <span> 主机清单 </span> </a>
             <ul class="list-unstyled">
-              <li><a href="">主机列表</a></li>
-              <li><a href="">容器列表</a></li>
-              <li><a href="">镜像列表</a></li>
+                    <li><a href="">集群</a></li>
+                    <li><a href="">主机</a></li>
+                    <li><a href="">HBA卡</a></li>
+                    <li><a href="">网卡</a></li>
             </ul>
           </li>
 {#            {%endif%}#}
 
 {#          {%if perms.saltadmin.salt_index_view%}#}
 
-            <li class="has_sub"> <a href="#" class="waves-effect"><i class="ti-pencil-alt"></i><span> SALT管理 </span></a>
+            <li class="has_sub"> <a href="#" class="waves-effect"><i class="ti-server"></i><span> 存储清单 </span></a>
               <ul class="list-unstyled">
-                <li><a href="">Master管理</a></li>
-                <li><a href="">keys管理</a></li>
-                <li><a href="">minion状态</a></li>
-                <li><a href="">软件部署</a></li>
-                <li><a href="">Job管理</a></li>
-                <li><a href="">批量执行</a></li>
+                  <li><a href="">datastore</a></li>
+                  <li><a href="">多路径</a></li>
               </ul>
             </li>
 {#          {%endif%}#}
 
-          <li class="has_sub"> <a href="#" class="waves-effect"><i class="ti-menu-alt"></i><span> 域名管理 </span></a>
+          <li class="has_sub"> <a href="#" class="waves-effect"><i class="ti-cloud-up"></i><span> 网络清单 </span></a>
             <ul class="list-unstyled">
-              <li><a href="#">域名列表</a></li>
-              <li><a href="#">域名解析</a></li>
-              <li><a href="#">变更记录</a></li>
+                <li><a href="#">物理网卡</a></li>
+                <li><a href="#">标准交换机</a></li>
+                <li><a href="#">标准交换机端口</a></li>
+                <li><a href="#">分布式交换机</a></li>
+                <li><a href="#">分布式交换机端口</a></li>
+                <li><a href="#">vmKernal</a></li>
+
             </ul>
           </li>
 
 
-          <li class="has_sub"> <a href="#" class="waves-effect"><i class=" ti-reload"></i><span> 代码发布 </span></a>
+          <li class="has_sub"> <a href="#" class="waves-effect"><i class="ti-alert"></i><span> 告警清单 </span></a>
             <ul class="list-unstyled">
-              <li><a href="#">增量发布</a></li>
-              <li><a href="#">全量发布</a></li>
-              <li><a href="#">发布记录</a></li>
+                 <li><a href="#">存储告警</a></li>
+                <li><a href="#">僵尸vmdk</a></li>
+                <li><a href="#">文件名不一致</a></li>
+                <li><a href="#">VMware Tools</a></li>
+                <li><a href="#">连接CD-ROM虚拟机</a></li>
+
             </ul>
           </li>
 
-          <li > <a href="/admin" class="waves-effect"><i class=" ti-desktop"></i><span> 系统后台 </span></a>
+          <li > <a href="/admin" class="waves-effect"><i class="ti-menu-alt"></i><span> 系统后台 </span></a>
         </ul>
         <div class="clearfix"></div>
       </div>
@@ -143,7 +154,7 @@
       <!-- container -->
     </div>
     <!-- content -->
-    <footer class="footer text-right"> 2016 &copy; simpletourdevops 简途运维部 </footer>
+    <footer class="footer text-right"> 2022 &copy; TAM运维工具 </footer>
   </div>  <!--首页内容-->
   <!-- ============================================================== -->
   <!-- Right Sidebar
