@@ -1681,9 +1681,9 @@ File: Pages
    Accounts pages
 ============= */
 .account-pages {
-  background-image: url("../images/login-bg.png");
+  background-image: url("../images/HorizonLogin_bg.png");
   position: absolute;
-  background-size:cover;
+  /*background-size:cover;*/
   height: 100%;
   width: 100%;
 }
