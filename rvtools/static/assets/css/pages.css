@@ -1681,8 +1681,9 @@ File: Pages
    Accounts pages
 ============= */
 .account-pages {
-  background: url("../images/agsquare.png");
+  background-image: url("../images/login-bg.png");
   position: absolute;
+  background-size:cover;
   height: 100%;
   width: 100%;
 }
@@ -1692,7 +1693,7 @@ File: Pages
   width: 420px;
 }
 .wrapper-page .card-box {
-  border: 1px solid rgba(54, 64, 74, 0.1);
+  border: 3px solid rgba(54, 64, 74, 0.1);
 }
 .panel-pages {
   border-radius: 6px;

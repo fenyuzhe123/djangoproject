@@ -15,8 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from rvtools import views
+from rvtools.views import hosts, login
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.index, name='hba'),
+    path('hba/', hosts.hba, name='hba'),
+    path('login/', login.login),
+    path('logout/', login.logout, name='logout')
 ]
