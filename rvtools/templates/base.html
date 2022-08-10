@@ -76,7 +76,7 @@
 {#            {% if perms.servermanager.assets_index_view %}#}
                 <li class="has_sub" id="index"> <a href="#" class="waves-effect"><i class="ti-desktop"></i> <span>虚拟机清单</span> </a>
                 <ul class="list-unstyled">
-                    <li><a href="">虚拟机清单</a></li>
+                    <li><a href="{% url 'vm' %}">虚拟机列表</a></li>
                     <li><a href="">虚拟机CPU</a></li>
                     <li><a href="">虚拟内存</a></li>
                     <li><a href="">虚拟机磁盘</a></li>
@@ -93,7 +93,7 @@
             <ul class="list-unstyled">
                     <li><a href="">集群</a></li>
                     <li><a href="">主机</a></li>
-                    <li><a href="">HBA卡</a></li>
+                    <li><a href="{% url 'hba' %}">HBA卡</a></li>
                     <li><a href="">网卡</a></li>
             </ul>
           </li>

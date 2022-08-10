@@ -15,10 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from rvtools.views import hosts, login
+from rvtools.views import hba, login, vm
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('hba/', hosts.hba, name='hba'),
+    path('hba/', hba.hba, name='hba'),
     path('login/', login.login),
-    path('logout/', login.logout, name='logout')
+    path('logout/', login.logout, name='logout'),
+    path('vm/', vm.vm, name='vm')
 ]

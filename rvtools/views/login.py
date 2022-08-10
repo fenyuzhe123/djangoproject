@@ -33,7 +33,7 @@ def login(request):
             return render(request, 'login.html', {'form': form})
     # 用户名和密码正确，网站生产随机字符串，写入用户浏览器cookies中，再写入session中
         request.session["info"] = admin_object.username
-        return redirect('/hba/')
+        return redirect('/vm/')
 
     return render(request, 'login.html', {'form': form})
 
