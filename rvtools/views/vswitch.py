@@ -7,27 +7,28 @@ from rvtools.utils.pagination import Pagination
 
 class dashModelForm(forms.ModelForm):
     class Meta:
-        model = models.VM
+        model = models.vSwitch
         fields = '__all__'
 
 
-def vm(request):
+def vswitch(request):
     search_data = request.GET.get('q', "")
 
     if search_data:
-        queryset = models.VM.objects.filter(
-            Q(vmname__contains=search_data) | Q(primaryip__contains=search_data))
+        queryset = models.vSwitch.objects.filter(
+            Q(Host__contains=search_data) | Q(Cluster__contains=search_data) | Q(Datacenter__contains=search_data) |
+            Q(MTU__contains=search_data) | Q(vcenter__contains=search_data))
     else:
-        queryset = models.VM.objects.all()
+        queryset = models.vSwitch.objects.all()
 
     page_object = Pagination(request, queryset)
     total = queryset.count()
     context = {
         "search_data": search_data,
-        "total": total,  # 返回总条目数nic.pynic.py
+        "total": total,  # 返回总条目数
         "queryset": page_object.page_queryset,  # 分完页的数据
         "page_string": page_object.html()  # 生成的页码
     }
 
-#   print(queryset)
-    return render(request, 'vm.html', context)
+    # print(queryset.count())
+    return render(request, 'vswitch.html', context)

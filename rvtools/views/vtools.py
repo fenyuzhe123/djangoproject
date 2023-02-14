@@ -7,18 +7,20 @@ from rvtools.utils.pagination import Pagination
 
 class dashModelForm(forms.ModelForm):
     class Meta:
-        model = models.VM
+        model = models.vTools
         fields = '__all__'
 
 
-def vm(request):
+def vtools(request):
     search_data = request.GET.get('q', "")
 
     if search_data:
-        queryset = models.VM.objects.filter(
-            Q(vmname__contains=search_data) | Q(primaryip__contains=search_data))
+        queryset = models.vTools.objects.filter(
+            Q(VM__contains=search_data) | Q(Powerstate__contains=search_data) | Q(Template__contains=search_data) |
+            Q(VMVersion__contains=search_data) | Q(Tools__contains=search_data) | Q(ToolsVersion__contains=search_data) |
+            Q(Upgradeable__contains=search_data) | Q(vcenter__contains=search_data))
     else:
-        queryset = models.VM.objects.all()
+        queryset = models.vTools.objects.all()
 
     page_object = Pagination(request, queryset)
     total = queryset.count()
@@ -30,4 +32,4 @@ def vm(request):
     }
 
 #   print(queryset)
-    return render(request, 'vm.html', context)
+    return render(request, 'vtools.html', context)

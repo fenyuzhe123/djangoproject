@@ -83,7 +83,7 @@
                     <li><a href="">虚拟机分区</a></li>
                     <li><a href="">虚拟机网卡</a></li>
                     <li><a href="">虚拟机快照</a></li>
-                    <li><a href="">VMware Tools</a></li>
+                    <li><a href="{% url 'vtools' %}">VMware Tools</a></li>
                     <li><a href="">CD-ROM</a></li>
                 </ul>
               </li>
@@ -91,10 +91,12 @@
 {#            {%if perms.dockermanager.docker_index_view%}#}
                <li class="has_sub"> <a href="#" class="waves-effect"><i class="ti-menu"></i> <span> 主机清单 </span> </a>
             <ul class="list-unstyled">
-                    <li><a href="">集群</a></li>
-                    <li><a href="">主机</a></li>
+                    <li><a href="{% url 'cluster' %}">集群</a></li>
+                    <li><a href="{% url 'host' %}">主机</a></li>
                     <li><a href="{% url 'hba' %}">HBA卡</a></li>
-                    <li><a href="">网卡</a></li>
+                    <li><a href="#">HBA驱动</a></li>
+                    <li><a href="{% url 'nic' %}">网卡</a></li>
+                    <li><a href="#">网卡驱动</a></li>
             </ul>
           </li>
 {#            {%endif%}#}
@@ -103,20 +105,19 @@
 
             <li class="has_sub"> <a href="#" class="waves-effect"><i class="ti-server"></i><span> 存储清单 </span></a>
               <ul class="list-unstyled">
-                  <li><a href="">datastore</a></li>
-                  <li><a href="">多路径</a></li>
+                  <li><a href="{% url 'datastore' %}">datastore</a></li>
+                  <li><a href="{% url 'multipath' %}">多路径</a></li>
               </ul>
             </li>
 {#          {%endif%}#}
 
           <li class="has_sub"> <a href="#" class="waves-effect"><i class="ti-cloud-up"></i><span> 网络清单 </span></a>
             <ul class="list-unstyled">
-                <li><a href="#">物理网卡</a></li>
-                <li><a href="#">标准交换机</a></li>
-                <li><a href="#">标准交换机端口</a></li>
-                <li><a href="#">分布式交换机</a></li>
-                <li><a href="#">分布式交换机端口</a></li>
-                <li><a href="#">vmKernal</a></li>
+                <li><a href="{% url 'vswitch' %}">标准交换机</a></li>
+                <li><a href="{% url 'vport' %}">标准交换机端口</a></li>
+                <li><a href="{% url 'dvswitch' %}">分布式交换机</a></li>
+                <li><a href="{% url 'dvport' %}">分布式交换机端口</a></li>
+                <li><a href="{% url 'vsc_vmk' %}">VMKernal</a></li>
 
             </ul>
           </li>
@@ -124,12 +125,14 @@
 
           <li class="has_sub"> <a href="#" class="waves-effect"><i class="ti-alert"></i><span> 告警清单 </span></a>
             <ul class="list-unstyled">
-                 <li><a href="#">存储告警</a></li>
-                <li><a href="#">僵尸vmdk</a></li>
-                <li><a href="#">文件名不一致</a></li>
-                <li><a href="#">VMware Tools</a></li>
-                <li><a href="#">连接CD-ROM虚拟机</a></li>
-
+                <li><a href="{% url 'vmstorage' %}">存储</a></li>
+                <li><a href="{% url 'zombie' %}">僵尸vmdk</a></li>
+                <li><a href="{% url 'foldername' %}">文件名不一致</a></li>
+                <li><a href="{% url 'toolsissue' %}">VMware Tools</a></li>
+                <li><a href="{% url 'snapshot' %}">快照</a></li>
+                <li><a href="{% url 'performance' %}">虚拟机性能</a></li>
+                <li><a href="{% url 'cdrom' %}">连接CD-ROM虚拟机</a></li>
+                <li><a href="{% url 'usb' %}">连接USB虚拟机</a></li>
             </ul>
           </li>
 
