@@ -16,11 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from rvtools.views import hba, login, vm, cluster, host, nic, datastore, multipath, vswitch, vport,\
-    dvswitch, dvport, vsc_vmk, vhealth, vtools
+    dvswitch, dvport, vsc_vmk, vhealth, vtools, vsnapshot
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', login.login),
     path('hba/', hba.hba, name='hba'),
     path('login/', login.login),
     path('logout/', login.logout, name='logout'),
@@ -43,5 +44,8 @@ urlpatterns = [
     path('performance/', vhealth.performance, name='performance'),
     path('cdrom/', vhealth.cdrom, name='cdrom'),
     path('usb/', vhealth.usb, name='usb'),
-    path('vtools/', vtools.vtools, name='vtools')
+    path('vtools/', vtools.vtools, name='vtools'),
+    path('vsnapshot/', vsnapshot.vsnapshot, name='vsnapshot'),
+    path('vm-export-csv/', vm.export_csv, name='export_csv'),
+    path('cluster-export-csv/', cluster.export_csv, name='export_csv')
 ]

@@ -2,7 +2,6 @@
 
 {% block content %}
 
-
 <link href="/static/assets/plugins/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
 <link href="/static/assets/plugins/bootstrap-table/dist/bootstrap-table.min.css" rel="stylesheet" type="text/css">
 <style>
@@ -60,13 +59,17 @@
                             <div class="col-sm-12">
                                 <h4 class="m-t-0 header-title"><b>虚拟机列表</b></h4>
                             </div>
-
+{#                            <a href="{% url 'export_csv' %}" class="btn waves-effect waves-light btn-primary">导出CSV</a>#}
                             <div>
                                 <div class="col-sm-8"></div>
-                                    <div class="col-sm-4">
+                                    <div class="col-sm-8">
+                    <form method="get" action="{% url 'vm'  %}">
                                             <form method="get" action="{% url 'vm'  %}">
 {#                                            {{% csrf_token  %}}#}
                                                 <div class="input-group">
+                                                    <span class="input-group-btn" style="width: 40%;">
+                                                <a href="{% url 'export_csv' %}" class="btn waves-effect waves-light btn-primary">导出CSV</a>
+                                                    </span>
                                                 <input type="text" id="q" name="q" class="form-control" placeholder="搜索..." value="{{ search_data }}">
                                                 <span class="input-group-btn">
                                                 <button type="submit" class="btn waves-effect waves-light btn-primary"  ><i class="fa fa-search"></i></button>

@@ -44,10 +44,10 @@
           <div class="pull-left">
             <button class="button-menu-mobile open-left"> <i class="ion-navicon"></i> </button>
             <span class="clearfix"></span> </div>
-          <form role="search" class="navbar-left app-search pull-left hidden-xs">
-            <input type="text" placeholder="搜索..." class="form-control">
-            <a href=""><i class="fa fa-search"></i></a>
-          </form>
+{#          <form role="search" class="navbar-left app-search pull-left hidden-xs">#}
+{#            <input type="text" placeholder="搜索..." class="form-control">#}
+{#            <a href=""><i class="fa fa-search"></i></a>#}
+{#          </form>#}
           <ul class="nav navbar-nav navbar-right pull-right">
             <li class="hidden-xs"> <a href="#" id="btn-fullscreen" class="waves-effect waves-light"><i class="icon-size-fullscreen"></i></a> </li>
             <li class="dropdown"> <a href="" class="dropdown-toggle profile" data-toggle="dropdown" aria-expanded="true"><img src="/static/assets/images/users/admin-03.png" alt="user-img" class="img-circle"> </a>
@@ -82,7 +82,7 @@
                     <li><a href="">虚拟机磁盘</a></li>
                     <li><a href="">虚拟机分区</a></li>
                     <li><a href="">虚拟机网卡</a></li>
-                    <li><a href="">虚拟机快照</a></li>
+                    <li><a href="{% url 'vsnapshot' %}">虚拟机快照</a></li>
                     <li><a href="{% url 'vtools' %}">VMware Tools</a></li>
                     <li><a href="">CD-ROM</a></li>
                 </ul>

@@ -43,7 +43,7 @@
    <!-- Page-Title -->
     <div class="row ">
             <div class="col-sm-12">
-                <h4 class="page-title">集群清单</h4>
+                <h4 class="page-title">虚拟机快照清单</h4>
                 <ol class="breadcrumb">
 {#                    <li>#}
 {#                        <a href="#">主机管理</a>#}
@@ -58,19 +58,15 @@
                     <div class="card-box">
                         <div class="row">
                             <div class="col-sm-12">
-                                <h4 class="m-t-0 header-title"><b>集群列表</b></h4>
+                                <h4 class="m-t-0 header-title"><b>虚拟机快照列表</b></h4>
                             </div>
 
                             <div>
                                 <div class="col-sm-8"></div>
-                                    <div class="col-sm-8">
-                    <form method="get" action="{% url 'vm'  %}">
-                                            <form method="get" action="{% url 'cluster'  %}">
+                                    <div class="col-sm-4">
+                                            <form method="get" action="{% url 'vsnapshot'  %}">
 {#                                            {{% csrf_token  %}}#}
                                                 <div class="input-group">
-                                                    <span class="input-group-btn" style="width: 40%;">
-                                                <a href="{% url 'export_csv' %}" class="btn waves-effect waves-light btn-primary">导出CSV</a>
-                                                    </span>
                                                 <input type="text" id="q" name="q" class="form-control" placeholder="搜索..." value="{{ search_data }}">
                                                 <span class="input-group-btn">
                                                 <button type="submit" class="btn waves-effect waves-light btn-primary"  ><i class="fa fa-search"></i></button>
@@ -90,18 +86,22 @@
                                         <table class="table-bordered" data-page-size="5" data-toggle="table" >
                                             <thead>
                                                 <tr>
-                                                    <th>集群名称</th>
-                                                    <th>主机数量</th>
-                                                    <th>总CPU</th>
-                                                    <th>可用CPU</th>
-                                                    <th>CPU核心</th>
-                                                    <th>cpu线程</th>
-                                                    <th>总内存</th>
-                                                    <th>可用内存</th>
-                                                    <th>启用HA</th>
-                                                    <th>启用DRS</th>
-                                                    <th>接入控制启用</th>
-                                                    <th>vCenter</th>
+                                                    <th>VM名称</th>
+                                                    <th>快照名称</th>
+                                                    <th>描述</th>
+                                                    <th>时间</th>
+                                                    <th>快照路径</th>
+                                                    <th>快照大小MiB(vmsn)</th>
+                                                    <th>快照大小MiB(total)</th>
+                                                    <th>是否静默</th>
+                                                    <th>备份状态</th>
+                                                    <th>上次备份时间</th>
+                                                    <th>数据中心</th>
+                                                    <th>集群</th>
+                                                    <th>主机</th>
+                                                    <th>文件夹</th>
+                                                    <th>vcenter</th>
+
                                                 </tr>
                                             </thead>
                                             <tbody id="tb1">
@@ -109,18 +109,21 @@
                                             {% for obj in queryset %}
                                                 <tr>
 {#                                                    <td class="sn"><a href="{% url 'ServerDetail' server.id %}">{{server.sn}}</a></td>#}
-                                                    <td>{{ obj.clustername }}</td>
-                                                    <td>{{ obj.numhosts }}</td>
-                                                    <td>{{ obj.totalcpu }}</td>
-                                                    <td>{{ obj.effectivecpu }}</td>
-                                                    <td>{{ obj.numcpucores }}</td>
-                                                    <td>{{ obj.numcputhreads }}</td>
-                                                    <td>{{ obj.totalmemory }}</td>
-                                                    <td>{{ obj.effectivememory }}</td>
-                                                    <td>{{ obj.haenabled }}</td>
-                                                    <td>{{ obj.DRSenable }}</td>
-                                                    <td>{{ obj.admissioncontrolenabled }}</td>
-                                                    <td>{{ obj.visdkserver }}</td>
+                                                    <td>{{ obj.VM }}</td>
+                                                    <td>{{ obj.Name }}</td>
+                                                    <td>{{ obj.Description }}</td>
+                                                    <td>{{ obj.Date }}</td>
+                                                    <td>{{ obj.Filename }}</td>
+                                                    <td>{{ obj.Size }}</td>
+                                                    <td>{{ obj.SizeTotal }}</td>
+                                                    <td>{{ obj.Quiesced }}</td>
+                                                    <td>{{ obj.BackupStatus }}</td>
+                                                    <td>{{ obj.LastBackup }}</td>
+                                                    <td>{{ obj.Datacenter }}</td>
+                                                    <td>{{ obj.Cluster }}</td>
+                                                    <td>{{ obj.Host }}</td>
+                                                    <td>{{ obj.Folder }}</td>
+                                                    <td>{{ obj.vcenter }}</td>
 
 {#                                                    <td class="hostName">{{obj.host}}</td>#}
 {#                                                    <td>{{server.Assets.IDC}}</td>#}
