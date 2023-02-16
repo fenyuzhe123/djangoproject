@@ -2,7 +2,6 @@
 
 {% block content %}
 
-
 <link href="/static/assets/plugins/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
 <link href="/static/assets/plugins/bootstrap-table/dist/bootstrap-table.min.css" rel="stylesheet" type="text/css">
 <style>
@@ -43,10 +42,10 @@
    <!-- Page-Title -->
     <div class="row ">
             <div class="col-sm-12">
-                <h4 class="page-title">虚拟机性能问题清单</h4>
+                <h4 class="page-title">虚拟机磁盘清单</h4>
                 <ol class="breadcrumb">
 {#                    <li>#}
-{#                        <a href="#">网卡清单</a>#}
+{#                        <a href="#">主机管理</a>#}
 {#                    </li>#}
 {#                    <li class="active">#}
 {#                        <a href="{% url 'ServerList' 1 %}">服务器列表</a>#}
@@ -58,17 +57,17 @@
                     <div class="card-box">
                         <div class="row">
                             <div class="col-sm-12">
-                                <h4 class="m-t-0 header-title"><b>虚拟机性能问题列表</b></h4>
+                                <h4 class="m-t-0 header-title"><b>虚拟机磁盘列表</b></h4>
                             </div>
-
+{#                            <a href="{% url 'export_csv' %}" class="btn waves-effect waves-light btn-primary">导出CSV</a>#}
                             <div>
                                 <div class="col-sm-8"></div>
                                     <div class="col-sm-8">
-                                            <form method="get" action="{% url 'performance'  %}">
+                                            <form method="get" action="{% url 'vdisk'  %}">
 {#                                            {{% csrf_token  %}}#}
                                                 <div class="input-group">
                                                     <span class="input-group-btn" style="width: 40%;">
-                                                <a href="{% url 'vhealth-export-csv' %}" class="btn waves-effect waves-light btn-primary">导出CSV</a>
+                                                <a href="{% url 'vdisk-export-csv' %}" class="btn waves-effect waves-light btn-primary">导出CSV</a>
                                                     </span>
                                                 <input type="text" id="q" name="q" class="form-control" placeholder="搜索..." value="{{ search_data }}">
                                                 <span class="input-group-btn">
@@ -90,7 +89,26 @@
                                             <thead>
                                                 <tr>
                                                     <th>名称</th>
-                                                    <th>信息</th>
+                                                    <th>电源状态</th>
+                                                    <th>模板</th>
+                                                    <th>磁盘</th>
+                                                    <th>容量(MiB)</th>
+                                                    <th>磁盘模式</th>
+                                                    <th>精简分配</th>
+                                                    <th>厚制备</th>
+                                                    <th>RAW</th>
+                                                    <th>控制器</th>
+                                                    <th>标签</th>
+                                                    <th>物理总线共享</th>
+                                                    <th>份额</th>
+                                                    <th>份额值</th>
+                                                    <th>限制</th>
+                                                    <th>预留</th>
+                                                    <th>路径</th>
+                                                    <th>数据中心</th>
+                                                    <th>集群</th>
+                                                    <th>主机</th>
+                                                    <th>文件夹</th>
                                                     <th>vCenter</th>
                                                 </tr>
                                             </thead>
@@ -99,8 +117,27 @@
                                             {% for obj in queryset %}
                                                 <tr>
 {#                                                    <td class="sn"><a href="{% url 'ServerDetail' server.id %}">{{server.sn}}</a></td>#}
-                                                    <td>{{ obj.Name }}</td>
-                                                    <td>{{ obj.Message }}</td>
+                                                    <td>{{ obj.VM }}</td>
+                                                    <td>{{ obj.Powerstate }}</td>
+                                                    <td>{{ obj.Template }}</td>
+                                                    <td>{{ obj.Disk }}</td>
+                                                    <td>{{ obj.Capacity }}</td>
+                                                    <td>{{ obj.DiskMode }}</td>
+                                                    <td>{{ obj.Thin }}</td>
+                                                    <td>{{ obj.EagerlyScrub }}</td>
+                                                    <td>{{ obj.Raw }}</td>
+                                                    <td>{{ obj.Controller }}</td>
+                                                    <td>{{ obj.Label }}</td>
+                                                    <td>{{ obj.SharedBus}}</td>
+                                                    <td>{{ obj.Level}}</td>
+                                                    <td>{{ obj.Shares }}</td>
+                                                    <td>{{ obj.LimitUse }}</td>
+                                                    <td>{{ obj.Reservation }}</td>
+                                                    <td>{{ obj.Path }}</td>
+                                                    <td>{{ obj.Datacenter }}</td>
+                                                    <td>{{ obj.Cluster }}</td>
+                                                    <td>{{ obj.Host }}</td>
+                                                    <td>{{ obj.Folder }}</td>
                                                     <td>{{ obj.vcenter }}</td>
 
 {#                                                    <td class="hostName">{{obj.host}}</td>#}

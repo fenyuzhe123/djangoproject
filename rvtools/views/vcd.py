@@ -11,36 +11,39 @@ from django.db import connections
 
 class dashModelForm(forms.ModelForm):
     class Meta:
-        model = models.vNIC
+        model = models.vCD
         fields = '__all__'
 
 
-def nic(request):
+def vcd(request):
     search_data = request.GET.get('q', "")
 
     if search_data:
-        queryset = models.vNIC.objects.filter(
-            Q(Host__contains=search_data) | Q(Cluster__contains=search_data) | Q(NetworkDevice__contains=search_data) |
-            Q(Driver__contains=search_data) | Q(MAC__contains=search_data))
+        queryset = models.vCD.objects.filter(
+            Q(VM__contains=search_data) | Q(Powerstate__contains=search_data) | Q(Template__contains=search_data) |
+            Q(DeviceType__contains=search_data) |
+            Q(Host__contains=search_data) | Q(Datacenter__contains=search_data) | Q(Cluster__contains=search_data) |
+            Q(vcenter__contains=search_data) | Q(Folder__contains=search_data))
+
     else:
-        queryset = models.vNIC.objects.all()
+        queryset = models.vCD.objects.all()
 
     page_object = Pagination(request, queryset)
     total = queryset.count()
     context = {
         "search_data": search_data,
-        "total": total,  # 返回总条目数
+        "total": total,  # 返回总条目数nic.pynic.py
         "queryset": page_object.page_queryset,  # 分完页的数据
         "page_string": page_object.html()  # 生成的页码
     }
 
-    # print(queryset.count())
-    return render(request, 'nic.html', context)
+#   print(queryset)
+    return render(request, 'vcd.html', context)
 
 
 def export_csv(request):
     # 定义要导出的表格名称
-    table_name = "rvtools_vnic"
+    table_name = "rvtools_vcd"
     # 查询要导出的表格数据
     with connections['default'].cursor() as cursor:
         cursor.execute(f"SELECT * FROM {table_name};")
@@ -48,7 +51,7 @@ def export_csv(request):
 
     # 定义响应的文件名
     response = HttpResponse(content_type="text/csv")
-    response["Content-Disposition"] = 'attachment; filename="nic-list.csv"'
+    response["Content-Disposition"] = 'attachment; filename="vcd-list.csv"'
 
     # 设置CSV编码为UTF-8
     response.write(u'\ufeff'.encode('utf8'))

@@ -20,8 +20,10 @@ def vm(request):
 
     if search_data:
         queryset = models.VM.objects.filter(
-            Q(vmname__contains=search_data) | Q(vcenter__contains=search_data) | Q(primaryip__contains=search_data))
-
+            Q(vmname__contains=search_data) | Q(vcenter__contains=search_data) | Q(primaryip__contains=search_data) |
+            Q(powerstate__contains=search_data) | Q(os__contains=search_data) | Q(cpus__contains=search_data) |
+            Q(memory__contains=search_data) | Q(nics__contains=search_data) | Q(virtualdisks=search_data) |
+            Q(host__contains=search_data) | Q(path__contains=search_data))
     else:
         queryset = models.VM.objects.all()
 

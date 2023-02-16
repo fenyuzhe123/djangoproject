@@ -731,3 +731,33 @@ class vMemory(models.Model):
     VMUUID = models.CharField(verbose_name='VMUUID', max_length=64, blank=True, null=True)
     vcenter = models.CharField(verbose_name='vcenter', max_length=64, blank=True, null=True)
     visdkuuid = models.CharField(verbose_name='visdkuuid', max_length=64, blank=True, null=True)
+
+
+# Fnic
+class Fnic(models.Model):
+    VMHost = models.CharField(verbose_name='VMHost', max_length=64, blank=True, null=True)
+    Adapter = models.CharField(verbose_name='Adapter', max_length=64, blank=True, null=True)
+    DriverName = models.CharField(verbose_name='DriverName', max_length=64, blank=True, null=True)
+    NodeName = models.CharField(verbose_name='NodeName', max_length=64, blank=True, null=True)
+    PortState = models.CharField(verbose_name='PortState', max_length=64, blank=True, null=True)
+    Speed = models.CharField(verbose_name='Speed', max_length=64, blank=True, null=True)
+    FirmwareVersion = models.CharField(verbose_name='FirmwareVersion', max_length=64, blank=True, null=True)
+    DriverVersion = models.CharField(verbose_name='DriverVersion', max_length=64, blank=True, null=True)
+
+
+
+# Enic
+class Enic(models.Model):
+    VMHost = models.CharField(verbose_name='VMHost', max_length=64, blank=True, null=True)
+    AdminStatus = models.CharField(verbose_name='AdminStatus', max_length=64, blank=True, null=True)
+    Description = models.CharField(verbose_name='Description', max_length=64, blank=True, null=True)
+    Driver = models.CharField(verbose_name='Driver', max_length=64, blank=True, null=True)
+    Duplex = models.CharField(verbose_name='Duplex', max_length=64, blank=True, null=True)
+    LinkStatus = models.CharField(verbose_name='LinkStatus', max_length=64, blank=True, null=True)
+    MACAddress = models.CharField(verbose_name='MACAddress', max_length=64, blank=True, null=True)
+    MTU = models.CharField(verbose_name='MTU', max_length=64, blank=True, null=True)
+    Name = models.CharField(verbose_name='Name', max_length=64, blank=True, null=True)
+    PCIDevice = models.CharField(verbose_name='PCIDevice', max_length=64, blank=True, null=True)
+    Speed = models.CharField(verbose_name='Speed', max_length=64, blank=True, null=True)
+    FirmwareVersion = models.CharField(verbose_name='FirmwareVersion', max_length=64, blank=True, null=True)
+    Version = models.CharField(verbose_name='Version', max_length=64, blank=True, null=True)

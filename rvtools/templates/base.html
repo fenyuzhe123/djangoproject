@@ -77,14 +77,14 @@
                 <li class="has_sub" id="index"> <a href="#" class="waves-effect"><i class="ti-desktop"></i> <span>虚拟机清单</span> </a>
                 <ul class="list-unstyled">
                     <li><a href="{% url 'vm' %}">虚拟机列表</a></li>
-                    <li><a href="">虚拟机CPU</a></li>
-                    <li><a href="">虚拟内存</a></li>
-                    <li><a href="">虚拟机磁盘</a></li>
-                    <li><a href="">虚拟机分区</a></li>
-                    <li><a href="">虚拟机网卡</a></li>
+                    <li><a href="{% url 'vcpu' %}">虚拟机CPU</a></li>
+                    <li><a href="{% url 'vmemory' %}">虚拟内存</a></li>
+                    <li><a href="{% url 'vdisk' %}">虚拟机磁盘</a></li>
+                    <li><a href="{% url 'vpartition' %}">虚拟机分区</a></li>
+                    <li><a href="{% url 'vnetwork' %}">虚拟机网卡</a></li>
                     <li><a href="{% url 'vsnapshot' %}">虚拟机快照</a></li>
                     <li><a href="{% url 'vtools' %}">VMware Tools</a></li>
-                    <li><a href="">CD-ROM</a></li>
+                    <li><a href="{% url 'vcd' %}">CD-ROM</a></li>
                 </ul>
               </li>
 {#            {%endif%}#}
@@ -157,7 +157,7 @@
       <!-- container -->
     </div>
     <!-- content -->
-    <footer class="footer text-right"> 2022 &copy; TAM运维工具 </footer>
+    <footer class="footer text-right"> 2023 &copy; TAM运维工具 </footer>
   </div>  <!--首页内容-->
   <!-- ============================================================== -->
   <!-- Right Sidebar

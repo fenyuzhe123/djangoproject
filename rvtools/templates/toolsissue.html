@@ -63,10 +63,13 @@
 
                             <div>
                                 <div class="col-sm-8"></div>
-                                    <div class="col-sm-4">
+                                    <div class="col-sm-8">
                                             <form method="get" action="{% url 'toolsissue'  %}">
 {#                                            {{% csrf_token  %}}#}
                                                 <div class="input-group">
+                                                    <span class="input-group-btn" style="width: 40%;">
+                                                <a href="{% url 'vhealth-export-csv' %}" class="btn waves-effect waves-light btn-primary">导出CSV</a>
+                                                    </span>
                                                 <input type="text" id="q" name="q" class="form-control" placeholder="搜索..." value="{{ search_data }}">
                                                 <span class="input-group-btn">
                                                 <button type="submit" class="btn waves-effect waves-light btn-primary"  ><i class="fa fa-search"></i></button>

@@ -63,12 +63,11 @@
                             <div>
                                 <div class="col-sm-8"></div>
                                     <div class="col-sm-8">
-                    <form method="get" action="{% url 'vm'  %}">
                                             <form method="get" action="{% url 'vm'  %}">
 {#                                            {{% csrf_token  %}}#}
                                                 <div class="input-group">
                                                     <span class="input-group-btn" style="width: 40%;">
-                                                <a href="{% url 'export_csv' %}" class="btn waves-effect waves-light btn-primary">导出CSV</a>
+                                                <a href="{% url 'vm-export-csv' %}" class="btn waves-effect waves-light btn-primary">导出CSV</a>
                                                     </span>
                                                 <input type="text" id="q" name="q" class="form-control" placeholder="搜索..." value="{{ search_data }}">
                                                 <span class="input-group-btn">
@@ -99,7 +98,6 @@
                                                     <th>磁盘数</th>
                                                     <th>所在主机</th>
                                                     <th>vmx路径</th>
-                                                    <th>启动时间</th>
                                                     <th>vCenter</th>
                                                 </tr>
                                             </thead>
@@ -118,7 +116,6 @@
                                                     <td>{{ obj.virtualdisks }}</td>
                                                     <td>{{ obj.host }}</td>
                                                     <td>{{ obj.path }}</td>
-                                                    <td>{{ obj.boottime }}</td>
                                                     <td>{{ obj.vcenter }}</td>
 
 {#                                                    <td class="hostName">{{obj.host}}</td>#}

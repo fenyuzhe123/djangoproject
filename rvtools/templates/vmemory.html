@@ -2,7 +2,6 @@
 
 {% block content %}
 
-
 <link href="/static/assets/plugins/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
 <link href="/static/assets/plugins/bootstrap-table/dist/bootstrap-table.min.css" rel="stylesheet" type="text/css">
 <style>
@@ -43,14 +42,14 @@
    <!-- Page-Title -->
     <div class="row ">
             <div class="col-sm-12">
-                <h4 class="page-title">HBA列表</h4>
+                <h4 class="page-title">虚拟机内存清单</h4>
                 <ol class="breadcrumb">
-                    <li>
-                        <a href="#">主机管理</a>
-                    </li>
-                    <li class="active">
+{#                    <li>#}
+{#                        <a href="#">主机管理</a>#}
+{#                    </li>#}
+{#                    <li class="active">#}
 {#                        <a href="{% url 'ServerList' 1 %}">服务器列表</a>#}
-                    </li>
+{#                    </li>#}
                 </ol>
             </div>
             <div class="row">
@@ -58,15 +57,18 @@
                     <div class="card-box">
                         <div class="row">
                             <div class="col-sm-12">
-                                <h4 class="m-t-0 header-title"><b>服务器HBA卡列表</b></h4>
+                                <h4 class="m-t-0 header-title"><b>虚拟机内存列表</b></h4>
                             </div>
-
+{#                            <a href="{% url 'export_csv' %}" class="btn waves-effect waves-light btn-primary">导出CSV</a>#}
                             <div>
                                 <div class="col-sm-8"></div>
-                                    <div class="col-sm-4">
-                                            <form method="get" action="{% url 'hba'  %}">
+                                    <div class="col-sm-8">
+                                            <form method="get" action="{% url 'vmemory'  %}">
 {#                                            {{% csrf_token  %}}#}
                                                 <div class="input-group">
+                                                    <span class="input-group-btn" style="width: 40%;">
+                                                <a href="{% url 'vmemory-export-csv' %}" class="btn waves-effect waves-light btn-primary">导出CSV</a>
+                                                    </span>
                                                 <input type="text" id="q" name="q" class="form-control" placeholder="搜索..." value="{{ search_data }}">
                                                 <span class="input-group-btn">
                                                 <button type="submit" class="btn waves-effect waves-light btn-primary"  ><i class="fa fa-search"></i></button>
@@ -86,18 +88,24 @@
                                         <table class="table-bordered" data-page-size="5" data-toggle="table" >
                                             <thead>
                                                 <tr>
-                                                    <th>ESXi</th>
+                                                    <th>名称</th>
+                                                    <th>电源状态</th>
+                                                    <th>模板</th>
+                                                    <th>内存(MiB)</th>
+                                                    <th>消耗</th>
+                                                    <th>活动</th>
+                                                    <th>交换</th>
+                                                    <th>膨胀</th>
+                                                    <th>预留</th>
+                                                    <th>限制</th>
+                                                    <th>份额</th>
+                                                    <th>份额值</th>
+                                                    <th>热添加</th>
                                                     <th>数据中心</th>
                                                     <th>集群</th>
-                                                    <th>设备</th>
-                                                    <th>类型</th>
-                                                    <th>状态</th>
-                                                    <th>bus</th>
-                                                    <th>pci</th>
-                                                    <th>driver</th>
-                                                    <th>model</th>
-                                                    <th>wwn</th>
-                                                    <th>vi_sdk_server</th>
+                                                    <th>主机</th>
+                                                    <th>文件夹</th>
+                                                    <th>vCenter</th>
                                                 </tr>
                                             </thead>
                                             <tbody id="tb1">
@@ -105,18 +113,24 @@
                                             {% for obj in queryset %}
                                                 <tr>
 {#                                                    <td class="sn"><a href="{% url 'ServerDetail' server.id %}">{{server.sn}}</a></td>#}
-                                                    <td>{{ obj.host }}</td>
-                                                    <td>{{ obj.datacenter }}</td>
-                                                    <td>{{ obj.cluster }}</td>
-                                                    <td>{{ obj.device }}</td>
-                                                    <td>{{ obj.type }}</td>
-                                                    <td>{{ obj.status }}</td>
-                                                    <td>{{ obj.bus }}</td>
-                                                    <td>{{ obj.pci }}</td>
-                                                    <td>{{ obj.driver }}</td>
-                                                    <td>{{ obj.model }}</td>
-                                                    <td>{{ obj.wwn }}</td>
-                                                    <td>{{ obj.vi_sdk_server }}</td>
+                                                    <td>{{ obj.VM }}</td>
+                                                    <td>{{ obj.Powerstate }}</td>
+                                                    <td>{{ obj.Template }}</td>
+                                                    <td>{{ obj.SizeMiB }}</td>
+                                                    <td>{{ obj.Consumed }}</td>
+                                                    <td>{{ obj.Active }}</td>
+                                                    <td>{{ obj.Swapped }}</td>
+                                                    <td>{{ obj.Ballooned }}</td>
+                                                    <td>{{ obj.Resevation }}</td>
+                                                    <td>{{ obj.LimitUse }}</td>
+                                                    <td>{{ obj.Level }}</td>
+                                                    <td>{{ obj.Shares }}</td>
+                                                    <td>{{ obj.HotAdd }}</td>
+                                                    <td>{{ obj.Datacenter }}</td>
+                                                    <td>{{ obj.Cluster }}</td>
+                                                    <td>{{ obj.Host }}</td>
+                                                    <td>{{ obj.Folder }}</td>
+                                                    <td>{{ obj.vcenter }}</td>
 
 {#                                                    <td class="hostName">{{obj.host}}</td>#}
 {#                                                    <td>{{server.Assets.IDC}}</td>#}
