@@ -94,9 +94,9 @@
                     <li><a href="{% url 'cluster' %}">集群</a></li>
                     <li><a href="{% url 'host' %}">主机</a></li>
                     <li><a href="{% url 'hba' %}">HBA卡</a></li>
-                    <li><a href="#">HBA驱动</a></li>
+                    <li><a href="{% url 'fnic' %}">HBA驱动</a></li>
                     <li><a href="{% url 'nic' %}">网卡</a></li>
-                    <li><a href="#">网卡驱动</a></li>
+                    <li><a href="{% url 'enic' %}">网卡驱动</a></li>
             </ul>
           </li>
 {#            {%endif%}#}
@@ -136,7 +136,8 @@
             </ul>
           </li>
 
-          <li > <a href="/admin" class="waves-effect"><i class="ti-menu-alt"></i><span> 系统后台 </span></a>
+{#          <li > <a href="/admin" class="waves-effect"><i class="ti-menu-alt"></i><span> 系统后台 </span></a>#}
+            <li > <a href="{% url 'download_excel' %}" class="waves-effect"><i class="ti-menu-alt"></i><span> 清单下载 </span></a>
         </ul>
         <div class="clearfix"></div>
       </div>

@@ -16,10 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from rvtools.views import hba, login, vm, cluster, host, nic, datastore, multipath, vswitch, vport,\
-    dvswitch, dvport, vsc_vmk, vhealth, vtools, vsnapshot, vcpu, vmemory, vpartition, vnetwork, vcd, vdisk
+    dvswitch, dvport, vsc_vmk, vhealth, vtools, vsnapshot, vcpu, vmemory, vpartition, vnetwork, vcd, vdisk,download,\
+    fnic, enic
 
 
 urlpatterns = [
+    path('download-excel/', download.download_excel, name='download_excel'),
     path('admin/', admin.site.urls),
     path('', login.login),
     path('hba/', hba.hba, name='hba'),
@@ -72,7 +74,10 @@ urlpatterns = [
     path('vcd/', vcd.vcd, name='vcd'),
     path('vcd-export-csv/', vcd.export_csv, name='vcd-export-csv'),
     path('vdisk/', vdisk.vdisk, name='vdisk'),
-    path('vdisk-export-csv/', vdisk.export_csv, name='vdisk-export-csv')
-
+    path('vdisk-export-csv/', vdisk.export_csv, name='vdisk-export-csv'),
+    path('fnic/', fnic.fnic, name='fnic'),
+    path('fnic-export-csv/', fnic.export_csv, name='fnic-export-csv'),
+    path('enic/', enic.enic, name='enic'),
+    path('enic-export-csv/', fnic.export_csv, name='enic-export-csv')
 
 ]

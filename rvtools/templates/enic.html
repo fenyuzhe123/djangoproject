@@ -43,7 +43,7 @@
    <!-- Page-Title -->
     <div class="row ">
             <div class="col-sm-12">
-                <h4 class="page-title">HBA卡清单</h4>
+                <h4 class="page-title">网卡驱动清单</h4>
                 <ol class="breadcrumb">
 {#                    <li>#}
 {#                        <a href="#">主机清单</a>#}
@@ -51,24 +51,24 @@
 {#                    <li class="active">#}
 {#                        <a href="{% url 'ServerList' 1 %}">服务器列表</a>#}
 {#                    </li>#}
-{#                </ol>#}
+                </ol>
             </div>
             <div class="row">
                 <div class="col-sm-12">
                     <div class="card-box">
                         <div class="row">
                             <div class="col-sm-12">
-                                <h4 class="m-t-0 header-title"><b>HBA卡列表</b></h4>
+                                <h4 class="m-t-0 header-title"><b>网卡驱动列表</b></h4>
                             </div>
 
                             <div>
                                 <div class="col-sm-8"></div>
                                     <div class="col-sm-8">
-                                            <form method="get" action="{% url 'hba'  %}">
+                                            <form method="get" action="{% url 'enic'  %}">
 {#                                            {{% csrf_token  %}}#}
                                                 <div class="input-group">
                                                     <span class="input-group-btn" style="width: 40%;">
-                                                <a href="{% url 'hba-export-csv' %}" class="btn waves-effect waves-light btn-primary">导出CSV</a>
+                                                <a href="{% url 'enic-export-csv' %}" class="btn waves-effect waves-light btn-primary">导出CSV</a>
                                                     </span>
                                                 <input type="text" id="q" name="q" class="form-control" placeholder="搜索..." value="{{ search_data }}">
                                                 <span class="input-group-btn">
@@ -90,17 +90,18 @@
                                             <thead>
                                                 <tr>
                                                     <th>ESXi</th>
-                                                    <th>数据中心</th>
-                                                    <th>集群</th>
-                                                    <th>设备</th>
-                                                    <th>类型</th>
-                                                    <th>状态</th>
-                                                    <th>bus</th>
-                                                    <th>pci</th>
-                                                    <th>driver</th>
-                                                    <th>model</th>
-                                                    <th>wwn</th>
-                                                    <th>vCenter</th>
+                                                    <th>管理状态</th>
+                                                    <th>描述</th>
+                                                    <th>驱动</th>
+                                                    <th>全双工</th>
+                                                    <th>链路状态</th>
+                                                    <th>MAC地址</th>
+                                                    <th>MTU</th>
+                                                    <th>网卡名称</th>
+                                                    <th>PCI设备</th>
+                                                    <th>速率</th>
+                                                    <th>固件版本</th>
+                                                    <th>驱动版本</th>
                                                 </tr>
                                             </thead>
                                             <tbody id="tb1">
@@ -108,18 +109,20 @@
                                             {% for obj in queryset %}
                                                 <tr>
 {#                                                    <td class="sn"><a href="{% url 'ServerDetail' server.id %}">{{server.sn}}</a></td>#}
-                                                    <td>{{ obj.host }}</td>
-                                                    <td>{{ obj.datacenter }}</td>
-                                                    <td>{{ obj.cluster }}</td>
-                                                    <td>{{ obj.device }}</td>
-                                                    <td>{{ obj.type }}</td>
-                                                    <td>{{ obj.status }}</td>
-                                                    <td>{{ obj.bus }}</td>
-                                                    <td>{{ obj.pci }}</td>
-                                                    <td>{{ obj.driver }}</td>
-                                                    <td>{{ obj.model }}</td>
-                                                    <td>{{ obj.wwn }}</td>
-                                                    <td>{{ obj.vi_sdk_server }}</td>
+                                                    <td>{{ obj.VMHost }}</td>
+                                                    <td>{{ obj.AdminStatus }}</td>
+                                                    <td>{{ obj.Description }}</td>
+                                                    <td>{{ obj.Driver }}</td>
+                                                    <td>{{ obj.Duplex }}</td>
+                                                    <td>{{ obj.LinkStatus }}</td>
+                                                    <td>{{ obj.MACAddress }}</td>
+                                                    <td>{{ obj.MTU }}</td>
+                                                    <td>{{ obj.AdapterName }}</td>
+                                                    <td>{{ obj.PCIDevice }}</td>
+                                                    <td>{{ obj.Speed }}</td>
+                                                    <td>{{ obj.FirmwareVersion }}</td>
+                                                    <td>{{ obj.Version }}</td>
+
 
 {#                                                    <td class="hostName">{{obj.host}}</td>#}
 {#                                                    <td>{{server.Assets.IDC}}</td>#}
