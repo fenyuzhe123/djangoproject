@@ -16,14 +16,15 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from rvtools.views import hba, login, vm, cluster, host, nic, datastore, multipath, vswitch, vport,\
-    dvswitch, dvport, vsc_vmk, vhealth, vtools, vsnapshot, vcpu, vmemory, vpartition, vnetwork, vcd, vdisk,download,\
-    fnic, enic
+    dvswitch, dvport, vsc_vmk, vhealth, vtools, vsnapshot, vcpu, vmemory, vpartition, vnetwork, vcd, vdisk, download,\
+    fnic, enic, changepassword
 
 
 urlpatterns = [
     path('download-excel/', download.download_excel, name='download_excel'),
     path('admin/', admin.site.urls),
     path('', login.login),
+    path('change-password/', changepassword.changepassword, name='change-password'),
     path('hba/', hba.hba, name='hba'),
     path('hba-export-csv/', hba.export_csv, name='hba-export-csv'),
     path('login/', login.login),

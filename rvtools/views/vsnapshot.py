@@ -20,9 +20,9 @@ def vsnapshot(request):
 
     if search_data:
         queryset = models.vSnapshot.objects.filter(
-            Q(VM__contains=search_data) | Q(Powerstate__contains=search_data) | Q(Template__contains=search_data) |
-            Q(VMVersion__contains=search_data) | Q(Tools__contains=search_data) | Q(ToolsVersion__contains=search_data) |
-            Q(Upgradeable__contains=search_data) | Q(vcenter__contains=search_data))
+            Q(VM__contains=search_data) | Q(Name__contains=search_data) | Q(Description__contains=search_data) |
+            Q(Date__contains=search_data) | Q(Filename__contains=search_data) | Q(Cluster__contains=search_data) |
+            Q(Host__contains=search_data) | Q(vcenter__contains=search_data))
     else:
         queryset = models.vSnapshot.objects.all()
 
