@@ -1,6 +1,7 @@
 from django.shortcuts import render, HttpResponse, HttpResponseRedirect, redirect
 from django import forms
 from .. import models
+import datetime
 
 
 # 用户登录函数
@@ -31,6 +32,15 @@ def login(request):
         if not admin_object:
             form.add_error("password", "用户名或密码错误")
             return render(request, 'login.html', {'form': form})
+
+        # 增加TAM到期时间判断，如果离设定的到期时间小于30天，则提示告警不予登录
+        current_date = datetime.date.today()
+        fixed_date = datetime.date(2024, 6, 1)  # 将此处替换为TAM到期日期
+        date_diff = (current_date - fixed_date).days
+        if date_diff <= 30:
+            form.add_error("password", "您的TAM合同即将到期，请续约后联系TAM激活登录！")
+            return render(request, 'login.html', {'form': form})
+
     # 用户名和密码正确，网站生产随机字符串，写入用户浏览器cookies中，再写入session中
         request.session["info"] = admin_object.username
         return redirect('/vm/')
